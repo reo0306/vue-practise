@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { tmpdir } from 'os';
-import { ref, reactive, computed } from 'vue';
+import { ref, reactive, computed, watchEffect } from 'vue';
 
 const title = ref('Vue.js Course');
-let price = ref(9.99); // リアクティビティ（リアクティブ）
+const price = ref(9.99); // リアクティビティ（リアクティブ）
 function increment() {
   price.value += 1;
   instructor.age += 1;
@@ -60,11 +59,17 @@ function tmp() {
 const evaluation = computed(() => {
   console.log('computed');
   return tmp();
-  //return score.value > 3 ? 'Good' : 'Bad'
 });
 console.log(evaluation.value);
-const parentComp = computed(() => {
-  return evaluation.value;
+
+const count4 = ref(0);
+watchEffect(() => {
+  console.log('watchEffect');
+  setTimeout(() => {
+    console.log('after 1 secound');
+  }, 1000)
+  console.log(count4.value);
+  count4.value = 'hello';
 });
 </script>
 
@@ -79,24 +84,31 @@ const parentComp = computed(() => {
   <button @click="count3 = $event.clientX">button</button>
   <button @click="countUp($event, 5)">button</button>
 
+  <!-- click -->
   <p>{{ count3 }}</p>
   <div @click="count3++">
     <button @click.stop="count = 30">button</button>
   </div>
   <a @click.prevent href="https://vuejs.org">Vue.js</a>
 
+  <!-- event -->
   <p>{{ count3 }}</p>
   <input type="text" @[eventName].space.delete="count3++" />
 
+  <!-- v-model -->
   <p>{{ userInput }}</p>
   <input v-model="userInput" type="text" />
   <button @click="userInput = 'hi'">button</button>
 
+  <!-- computed -->
   <p>{{ score > 3 ? 'Good' : 'Bad' }}</p>
   <p>{{ evaluation }}</p>
   <p>{{ tmp() }}</p>
   <p>{{ score }}</p>
   <button @click="score++">+1</button>
+
+  <p>{{ count4 }}</p>
+  <button @click="count4++">+1</button>
 
   <h1>Title: {{ title }}</h1>
   <h2>Price: ${{ price - 1 }}</h2>
