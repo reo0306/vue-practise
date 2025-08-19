@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
+import { ref, reactive, computed } from 'vue';
 
 const title = ref('Vue.js Course');
 let price = ref(9.99); // リアクティビティ（リアクティブ）
@@ -50,6 +50,13 @@ function countUp(event, times) {
 const eventName = 'keyup';
 
 const userInput = ref('');
+
+const score = ref(0);
+const evaluation = computed(() => {
+  console.log('computed');
+  return score.value > 3 ? 'Good' : 'Bad'
+});
+console.log(evaluation.value);
 </script>
 
 <template>
@@ -75,6 +82,11 @@ const userInput = ref('');
   <p>{{ userInput }}</p>
   <input v-model="userInput" type="text" />
   <button @click="userInput = 'hi'">button</button>
+
+  <p>{{ score > 3 ? 'Good' : 'Bad' }}</p>
+  <p>{{ evaluation }}</p>
+  <p>{{ score }}</p>
+  <button @click="score++">+1</button>
 
   <h1>Title: {{ title }}</h1>
   <h2>Price: ${{ price - 1 }}</h2>
