@@ -44,8 +44,8 @@ const vueURL = ref("https://vuejs.org");
 const vueID = ref("vue-link");
 const count3 = ref(0);
 
-function countUp() {
-  count3.value++;
+function countUp(event, times) {
+  count3.value = event.clientX * times;
 }
 </script>
 
@@ -57,8 +57,14 @@ function countUp() {
   <div v-html="message"></div>
   <a v-bind="{id: vueID, href: vueURL}">Vue.js</a>
   <p>{{ count3 }}</p>
-  <button @click="count3++">button</button>
-  <button @click="countUp">button</button>
+  <button @click="count3 = $event.clientX">button</button>
+  <button @click="countUp($event, 5)">button</button>
+
+  <p>{{ count3 }}</p>
+  <div @click="count3++">
+    <button @click.stop="count = 30">button</button>
+  </div>
+  <a @click.prevent href="https://vuejs.org">Vue.js</a>
   <h1>Title: {{ title }}</h1>
   <h2>Price: ${{ price - 1 }}</h2>
   <button @click="increment">button</button>
