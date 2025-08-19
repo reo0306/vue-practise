@@ -50,7 +50,8 @@ const vueID = ref("vue-link");
   <div>{{ count }}</div>
   <div v-text="count"></div>
   <div v-html="message"></div>
-  <a :id="vueID" :href="vueURL">Vue.js</a>
+  <a v-bind="{id: vueID, href: vueURL}">Vue.js</a>
+  <button :disabled="''">button</button>
   <h1>Title: {{ title }}</h1>
   <h2>Price: ${{ price - 1 }}</h2>
   <button @click="increment">button</button>
