@@ -65,6 +65,10 @@ function countUp(event, times) {
     <button @click.stop="count = 30">button</button>
   </div>
   <a @click.prevent href="https://vuejs.org">Vue.js</a>
+
+  <p>{{ count3 }}</p>
+  <input type="text" @keyup.space.delete="count3++" />
+
   <h1>Title: {{ title }}</h1>
   <h2>Price: ${{ price - 1 }}</h2>
   <button @click="increment">button</button>
