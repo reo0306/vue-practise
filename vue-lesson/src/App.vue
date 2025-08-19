@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { tmpdir } from 'os';
 import { ref, reactive, computed } from 'vue';
 
 const title = ref('Vue.js Course');
@@ -52,11 +53,19 @@ const eventName = 'keyup';
 const userInput = ref('');
 
 const score = ref(0);
+
+function tmp() {
+  return score.value > 3 ? 'Good' : 'Bad';
+}
 const evaluation = computed(() => {
   console.log('computed');
-  return score.value > 3 ? 'Good' : 'Bad'
+  return tmp();
+  //return score.value > 3 ? 'Good' : 'Bad'
 });
 console.log(evaluation.value);
+const parentComp = computed(() => {
+  return evaluation.value;
+});
 </script>
 
 <template>
@@ -85,6 +94,7 @@ console.log(evaluation.value);
 
   <p>{{ score > 3 ? 'Good' : 'Bad' }}</p>
   <p>{{ evaluation }}</p>
+  <p>{{ tmp() }}</p>
   <p>{{ score }}</p>
   <button @click="score++">+1</button>
 
