@@ -6,7 +6,6 @@ let price = ref(9.99); // リアクティビティ（リアクティブ）
 function increment() {
   price.value += 1;
   instructor.age += 1;
-  instructor.bio = 'h1';
   instructor.sns.twitter = 'hello';
   instructor.email = ref('bbbb@exmaple.com');
 }
@@ -25,7 +24,7 @@ const instructor = reactive({
   },
   email: ref('aaaa@example.com'),
 });
-instructor.bio = 'hello';
+//instructor.bio = 'hello';
 // 配列のリアクティブは.valueが必要
 const item = reactive([ref(1),ref(2),ref(3),]);
 item.reverse();
@@ -34,9 +33,24 @@ const courseInfo = {
   language: ref('Japanese'),
 };
 console.log(courseInfo.sections.value);
+const sections = courseInfo.sections;
+
+const count = ref(2);
+const count2 = ref(4);
+
+const message = ref('<h1>Hello</h1>')
+
+const vueURL = ref("https://vuejs.org");
+const vueID = ref("vue-link");
 </script>
 
 <template>
+  <div>{{ count + count2 }}</div>
+  <div>{{ count > 3 ? 'Yes' : 'No' }}</div>
+  <div>{{ count }}</div>
+  <div v-text="count"></div>
+  <div v-html="message"></div>
+  <a :id="vueID" :href="vueURL">Vue.js</a>
   <h1>Title: {{ title }}</h1>
   <h2>Price: ${{ price - 1 }}</h2>
   <button @click="increment">button</button>
@@ -45,5 +59,5 @@ console.log(courseInfo.sections.value);
   <h2>Instructor bio: {{ instructor.bio }}</h2>
   <h2>Instructor SNS Twitter: {{ instructor.sns.twitter }}</h2>
   <h2>Instructor email: {{ instructor.email }}</h2>
-  <h2>Course Info Sections: {{ courseInfo.sections.value }}</h2>
+  <h2>Course Info Sections: {{ sections + 1 }}</h2>
 </template>
