@@ -47,6 +47,9 @@ const count3 = ref(0);
 function countUp(event, times) {
   count3.value = event.clientX * times;
 }
+const eventName = 'keyup';
+
+const userInput = ref('');
 </script>
 
 <template>
@@ -67,7 +70,11 @@ function countUp(event, times) {
   <a @click.prevent href="https://vuejs.org">Vue.js</a>
 
   <p>{{ count3 }}</p>
-  <input type="text" @keyup.space.delete="count3++" />
+  <input type="text" @[eventName].space.delete="count3++" />
+
+  <p>{{ userInput }}</p>
+  <input v-model="userInput" type="text" />
+  <button @click="userInput = 'hi'">button</button>
 
   <h1>Title: {{ title }}</h1>
   <h2>Price: ${{ price - 1 }}</h2>
