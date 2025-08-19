@@ -42,6 +42,11 @@ const message = ref('<h1>Hello</h1>')
 
 const vueURL = ref("https://vuejs.org");
 const vueID = ref("vue-link");
+const count3 = ref(0);
+
+function countUp() {
+  count3.value++;
+}
 </script>
 
 <template>
@@ -51,7 +56,9 @@ const vueID = ref("vue-link");
   <div v-text="count"></div>
   <div v-html="message"></div>
   <a v-bind="{id: vueID, href: vueURL}">Vue.js</a>
-  <button :disabled="''">button</button>
+  <p>{{ count3 }}</p>
+  <button @click="count3++">button</button>
+  <button @click="countUp">button</button>
   <h1>Title: {{ title }}</h1>
   <h2>Price: ${{ price - 1 }}</h2>
   <button @click="increment">button</button>
