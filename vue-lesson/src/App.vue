@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, reactive, computed, watchEffect } from 'vue';
+import { ref, reactive, computed, watchEffect, watch } from 'vue';
 
 const title = ref('Vue.js Course');
 const price = ref(9.99); // リアクティビティ（リアクティブ）
@@ -24,6 +24,7 @@ const instructor = reactive({
   },
   email: ref('aaaa@example.com'),
 });
+
 //instructor.bio = 'hello';
 // 配列のリアクティブは.valueが必要
 const item = reactive([ref(1),ref(2),ref(3),]);
@@ -63,14 +64,29 @@ const evaluation = computed(() => {
 console.log(evaluation.value);
 
 const count4 = ref(0);
+const count5 = ref(0);
+const count6 = ref(0);
+//watchEffect(() => {
+  //console.log('watchEffect');
+  //setTimeout(() => {
+    //console.log('after 1 secound');
+  //}, 1000)
+  //console.log(count4.value);
+  //count4.value = 'hello';
+//});
+
+// 監視対象を明示するとき（第一引数にリアクティブを渡す）
+watch(count4, (newValue, oldValue) => {
+  console.log('watch');
+  console.log('newValue', newValue);
+  console.log('oldValue', oldValue);
+});
+
+// 関数内のリアクティブ全部を監視したいとき
 watchEffect(() => {
   console.log('watchEffect');
-  setTimeout(() => {
-    console.log('after 1 secound');
-  }, 1000)
-  console.log(count4.value);
-  count4.value = 'hello';
-});
+  console.log(count4.value, count5.value, count6.value);
+})
 </script>
 
 <template>
@@ -105,10 +121,14 @@ watchEffect(() => {
   <p>{{ evaluation }}</p>
   <p>{{ tmp() }}</p>
   <p>{{ score }}</p>
-  <button @click="score++">+1</button>
+  <button @click="score++">computed +1</button>
 
   <p>{{ count4 }}</p>
-  <button @click="count4++">+1</button>
+  <p>{{ count5 }}</p>
+  <p>{{ count6 }}</p>
+  <button @click="count4++">watch count4 +1</button>
+  <button @click="count5++">watch count5 +1</button>
+  <button @click="count6++">watch count6 +1</button>
 
   <h1>Title: {{ title }}</h1>
   <h2>Price: ${{ price - 1 }}</h2>
