@@ -99,6 +99,14 @@ watchEffect(() => {
   console.log('watchEffect');
   console.log(count4.value, count5.value, count6.value);
 })
+
+const isRed = ref(true);
+const isBlue = ref(true);
+const className = ref('red');
+function toggleClass() {
+  isRed.value = !isRed.value;
+  isBlue.value = !isBlue.value;
+}
 </script>
 
 <template>
@@ -142,6 +150,9 @@ watchEffect(() => {
   <button @click="count5++">watch count5 +1</button>
   <button @click="count6++">watch count6 +1</button>
 
+  <div class="border" :class="[className, {'bg-blue': isBlue }]">Hello</div>
+  <button @click="toggleClass">toggle</button>
+
   <h1>Title: {{ title }}</h1>
   <h2>Price: ${{ price - 1 }}</h2>
   <button @click="increment">button</button>
@@ -152,3 +163,15 @@ watchEffect(() => {
   <h2>Instructor email: {{ instructor.email }}</h2>
   <h2>Course Info Sections: {{ sections + 1 }}</h2>
 </template>
+
+<style>
+.red {
+  color: red;
+}
+.bg-blue {
+  background-color: blue;
+}
+.border {
+  border: 1px solid red;
+}
+</style>
