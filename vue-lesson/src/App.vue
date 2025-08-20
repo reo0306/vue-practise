@@ -65,7 +65,9 @@ console.log(evaluation.value);
 
 const count4 = ref(0);
 const count5 = ref(0);
-const count6 = ref(0);
+const count6 = ref({
+  a:0
+});
 //watchEffect(() => {
   //console.log('watchEffect');
   //setTimeout(() => {
@@ -76,11 +78,21 @@ const count6 = ref(0);
 //});
 
 // 監視対象を明示するとき（第一引数にリアクティブを渡す）
-watch(count4, (newValue, oldValue) => {
+// 第一引数を関数にすることで、watchEffectと同じことができる
+// newValueとoldValueが同じだと、実行されない。
+// 第一引数に配列を指定することで、複数監視できる
+watch(() => {
+  console.log('watch first argument');
+  return count6.value.a;
+}, (newValue, oldValue) => {
   console.log('watch');
   console.log('newValue', newValue);
   console.log('oldValue', oldValue);
-});
+},
+{
+  immediate: true // 読み込時に実行設定
+}
+);
 
 // 関数内のリアクティブ全部を監視したいとき
 watchEffect(() => {
