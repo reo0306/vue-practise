@@ -150,8 +150,12 @@ function toggleClass() {
   <button @click="count5++">watch count5 +1</button>
   <button @click="count6++">watch count6 +1</button>
 
+  <!-- v-bind class -->
   <div class="border" :class="[className, {'bg-blue': isBlue }]">Hello</div>
   <button @click="toggleClass">toggle</button>
+
+  <!-- v-bind style -->
+  <div :style="{color: 'red', backgroundColor: 'blue'}">Hello2</div>
 
   <h1>Title: {{ title }}</h1>
   <h2>Price: ${{ price - 1 }}</h2>
