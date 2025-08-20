@@ -121,6 +121,8 @@ const maybeOk = ref(false);
     <p>Hello</p>
     <p>Hi</p>
   </template>
+  <!-- v-show display:noneで消してる。処理が早い。高頻度で変わる場合。templateでは動かない。elseもない -->
+  <p v-show="ok">OK!</p>
 
   <p v-if="ok">OK!</p>
   <p v-else-if="maybeOk">maybe OK!</p>
