@@ -115,6 +115,13 @@ const maybeOk = ref(false);
 <template>
   <!-- v-if, v-else-if v-else -->
   <button @click="ok = !ok">toggle</button>
+  <!-- v-ifといっしょに使うとtemplateタグは消える -->
+  <template v-if="ok">
+    <p>OK!</p>
+    <p>Hello</p>
+    <p>Hi</p>
+  </template>
+
   <p v-if="ok">OK!</p>
   <p v-else-if="maybeOk">maybe OK!</p>
   <p v-else>not OK...</p>
