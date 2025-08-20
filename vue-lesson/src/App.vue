@@ -110,9 +110,13 @@ function toggleClass() {
 
 const ok = ref(true);
 const maybeOk = ref(false);
+const fruits = ref(['Apple', 'Banana', 'Grape']);
 </script>
 
 <template>
+  <!-- v-for -->
+  <li v-for="fruit in fruits">{{ fruit }}</li>
+
   <!-- v-if, v-else-if v-else -->
   <button @click="ok = !ok">toggle</button>
   <!-- v-ifといっしょに使うとtemplateタグは消える -->
