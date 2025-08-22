@@ -133,10 +133,10 @@ function onReset(value) {
 </script>
 
 <template>
-  <!-- emit(child → parsent) -->
+  <!-- emit(child → parsent) ケバブケースを使うこと -->
   <p>{{ count2 }}</p>
   <button @click="count2++">+1</button>
-  <ResetButton @reset="onReset"/>
+  <ResetButton @reset-count="onReset"/>
 
   <!-- Props ケバブケースで書くこと -->
   <ShowCount :total-score="count" bar="hello" />

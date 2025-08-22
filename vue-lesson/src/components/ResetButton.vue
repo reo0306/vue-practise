@@ -1,3 +1,11 @@
+<script setup lang="ts">
+// 必須
+const emit = defineEmits(['resetCount']);
+function emitReset() {
+  emit('resetCount', 100);
+}
+</script>
+
 <template>
-  <button @click="$emit('reset', 100)">Reset</button>
+  <button @click="emitReset">Reset</button>
 </template>
