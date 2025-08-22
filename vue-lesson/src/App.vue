@@ -110,12 +110,18 @@ function toggleClass() {
 
 const ok = ref(true);
 const maybeOk = ref(false);
-const fruits = ref(['Apple', 'Banana', 'Grape']);
+const fruits = ref([
+  { id: 1, name: 'Apple' },
+  { id: 2, name: 'Apple' },
+  { id: 3, name: 'Banana' },
+  { id: 4, name: 'Grape' },
+]);
 </script>
 
 <template>
   <!-- v-for -->
-  <li v-for="fruit in fruits">{{ fruit }}</li>
+   <button @click="fruits.shift()">button</button>
+  <li v-for="fruit in fruits" :key="fruit.id"><input type="text" />{{ fruit.name }}</li>
 
   <!-- v-if, v-else-if v-else -->
   <button @click="ok = !ok">toggle</button>
