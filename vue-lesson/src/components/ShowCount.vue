@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { watchEffect } from 'vue';
 
-const { foo } = defineProps(['foo']);
+const { foo } = defineProps({
+  foo: {
+    type: Number,
+    default: 100
+  },
+});
 watchEffect(() => {
   console.log(foo);
 });
