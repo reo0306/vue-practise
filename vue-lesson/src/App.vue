@@ -129,8 +129,6 @@ const user = ref({
   <h2>App</h2>
   <BaseIcon />
   <CountUp />
-  <CountUp />
-  <CountUp />
   <!-- v-for number -->
   <p v-for="n in 10" :key="n">{{ n }}</p>
 
