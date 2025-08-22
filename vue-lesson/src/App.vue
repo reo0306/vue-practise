@@ -121,7 +121,7 @@ const fruits = ref([
 <template>
   <!-- v-for -->
    <button @click="fruits.shift()">button</button>
-  <li v-for="fruit in fruits" :key="fruit.id"><input type="text" />{{ fruit.name }}</li>
+  <li v-for="(fruit, index) in fruits" :key="fruit.id"><input type="text" />{{ fruit.name }}({{ index }})</li>
 
   <!-- v-if, v-else-if v-else -->
   <button @click="ok = !ok">toggle</button>
