@@ -1,9 +1,33 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-
-console.log('script');
+import {
+  ref,
+  onBeforeMount,
+  onMounted,
+  onBeforeUpdate,
+  onUpdated,
+  onBeforeUnmount,
+  onUnmounted
+} from 'vue';
 
 const count = ref(0);
+onBeforeMount(() => {
+  console.log('onBeforeMounted');
+})
+onMounted(() => {
+  console.log('onMounted');
+});
+onBeforeUpdate(() => {
+  console.log('onBeforeUpdated');
+})
+onUnmounted(() => {
+  console.log('onUnmounted');
+})
+onBeforeUnmount(() => {
+  console.log('onBeforeUmount');
+})
+onUpdated(() => {
+  console.log('onUpdated');
+})
 </script>
 
 <template>
