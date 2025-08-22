@@ -126,13 +126,17 @@ const user = ref({
   age: 25,
   gender: 'man',
 });
+
+function onReset(value) {
+    count2.value = value;
+}
 </script>
 
 <template>
   <!-- emit(child → parsent) -->
   <p>{{ count2 }}</p>
   <button @click="count2++">+1</button>
-  <ResetButton @reset="count2 = 0"/>
+  <ResetButton @reset="onReset"/>
 
   <!-- Props ケバブケースで書くこと -->
   <ShowCount :total-score="count" bar="hello" />
