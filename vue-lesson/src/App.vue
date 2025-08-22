@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import CountUp from './CountUp.vue';
+import CountUp from '@/components/CountUp.vue';
+import BaseButton from './components/BaseButton.vue';
 import { ref, reactive, computed, watchEffect, watch } from 'vue';
 
 const title = ref('Vue.js Course');
@@ -128,7 +129,8 @@ const user = ref({
 <template>
   <h2>App</h2>
   <BaseIcon />
-  <CountUp />
+  <CountUp id="base-button" class="border" />
+  <BaseButton id="base-button" class="border" @click="console.log('App.vue')"/>
   <!-- v-for number -->
   <p v-for="n in 10" :key="n">{{ n }}</p>
 
