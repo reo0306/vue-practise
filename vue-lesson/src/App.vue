@@ -129,7 +129,7 @@ const user = ref({
 
 <template>
   <!-- Props -->
-  <ShowCount :foo="undefined" bar="hello" />
+  <ShowCount :foo="count" bar="hello" />
   <button @click="count++">+1</button>
 
   <h2 class="red">App</h2>

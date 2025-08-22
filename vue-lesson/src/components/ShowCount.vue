@@ -1,18 +1,15 @@
 <script setup lang="ts">
-import { watchEffect } from 'vue';
-
-const { foo } = defineProps({
+defineProps({
   foo: {
     type: Number,
-    default: 100
+    required: true,
+    validator(value) {
+      return value === 0 || value === 1;
+    }
   },
-});
-watchEffect(() => {
-  console.log(foo);
 });
 </script>
 
 <template>
   <p>count:{{ foo }}</p>
-  <p>{{ $attrs }}</p>
 </template>
