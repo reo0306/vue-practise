@@ -126,6 +126,8 @@ const user = ref({
 </script>
 
 <template>
+  <h2>App</h2>
+  <BaseIcon />
   <CountUp />
   <CountUp />
   <CountUp />
