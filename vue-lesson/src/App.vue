@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import CountUp from './CountUp.vue';
 import { ref, reactive, computed, watchEffect, watch } from 'vue';
 
 const title = ref('Vue.js Course');
@@ -125,6 +126,9 @@ const user = ref({
 </script>
 
 <template>
+  <CountUp />
+  <CountUp />
+  <CountUp />
   <!-- v-for number -->
   <p v-for="n in 10" :key="n">{{ n }}</p>
 
