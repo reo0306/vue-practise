@@ -127,7 +127,7 @@ const user = ref({
 </script>
 
 <template>
-  <h2>App</h2>
+  <h2 class="red">App</h2>
   <BaseIcon />
   <CountUp id="base-button" class="border" />
   <BaseButton id="base-button" class="border" @click="console.log('App.vue')"/>
@@ -219,7 +219,7 @@ const user = ref({
   <h2>Course Info Sections: {{ sections + 1 }}</h2>
 </template>
 
-<style>
+<style scoped>
 .red {
   color: red;
 }
