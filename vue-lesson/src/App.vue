@@ -116,9 +116,21 @@ const fruits = ref([
   { id: 3, name: 'Banana' },
   { id: 4, name: 'Grape' },
 ]);
+
+const user = ref({
+  name: 'Yoshipi',
+  age: 25,
+  gender: 'man',
+});
 </script>
 
 <template>
+  <!-- v-for number -->
+  <p v-for="n in 10" :key="n">{{ n }}</p>
+
+  <!-- v-for object -->
+  <p v-for="(value, key, index) in user" :key="value">{{ key }}: {{ value }}({{ index }})</p>
+
   <!-- v-for -->
   <button @click="fruits.shift()">button</button>
   <template v-for="({id, name}, index) in fruits" :key="id">
