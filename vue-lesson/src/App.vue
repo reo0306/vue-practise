@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import CountUp from '@/components/CountUp.vue';
-import BaseButton from './components/BaseButton.vue';
+import BaseButton from '@/components/BaseButton.vue';
+import ShowCount from '@/components/ShowCount.vue';
 import { ref, reactive, computed, watchEffect, watch } from 'vue';
 
 const title = ref('Vue.js Course');
@@ -127,6 +128,10 @@ const user = ref({
 </script>
 
 <template>
+  <!-- Props -->
+  <ShowCount :foo="count" bar="hello" />
+  <button @click="count++">+1</button>
+
   <h2 class="red">App</h2>
   <BaseIcon />
   <CountUp id="base-button" class="border" />
