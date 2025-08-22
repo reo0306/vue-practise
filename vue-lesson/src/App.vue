@@ -2,6 +2,7 @@
 import CountUp from '@/components/CountUp.vue';
 import BaseButton from '@/components/BaseButton.vue';
 import ShowCount from '@/components/ShowCount.vue';
+import ResetButton from '@/components/ResetButton.vue';
 import { ref, reactive, computed, watchEffect, watch } from 'vue';
 
 const title = ref('Vue.js Course');
@@ -128,8 +129,13 @@ const user = ref({
 </script>
 
 <template>
-  <!-- Props -->
-  <ShowCount :foo="count" bar="hello" />
+  <!-- emit(child → parsent) -->
+  <p>{{ count2 }}</p>
+  <button @click="count2++">+1</button>
+  <ResetButton @reset="count2 = 0"/>
+
+  <!-- Props ケバブケースで書くこと -->
+  <ShowCount :total-score="count" bar="hello" />
   <button @click="count++">+1</button>
 
   <h2 class="red">App</h2>

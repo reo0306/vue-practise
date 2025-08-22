@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps({
-  foo: {
+  totalScore: {
     type: Number,
     required: true,
     validator(value) {
@@ -11,5 +11,5 @@ defineProps({
 </script>
 
 <template>
-  <p>count:{{ foo }}</p>
+  <p>count:{{ totalScore }}</p>
 </template>
