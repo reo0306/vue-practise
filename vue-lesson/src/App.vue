@@ -147,6 +147,7 @@ onMounted(() => {
     <h2>Hello</h2>
     <p>How are you</p>
   </BaseCard>
+  <BaseCard />
   <br>
   <input ref="user-input" type="text" />
 
