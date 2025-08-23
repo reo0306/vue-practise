@@ -3,7 +3,8 @@ import CountUp from '@/components/CountUp.vue';
 import BaseButton from '@/components/BaseButton.vue';
 import ShowCount from '@/components/ShowCount.vue';
 import ResetButton from '@/components/ResetButton.vue';
-import { ref, reactive, computed, watchEffect, watch } from 'vue';
+import BaseCard from '@/components/BaseCard.vue';
+import { ref, reactive, computed, watchEffect, watch, useTemplateRef, onMounted } from 'vue';
 
 const title = ref('Vue.js Course');
 const price = ref(9.99); // リアクティビティ（リアクティブ）
@@ -128,11 +129,27 @@ const user = ref({
 });
 
 function onReset(value) {
-    count2.value = value;
+  count2.value = value;
 }
+
+const userInput1 = useTemplateRef('user-input');
+console.log(userInput.value);
+onMounted(() => {
+  userInput1.value
+});
+
 </script>
 
 <template>
+  <!-- Propsとは違う方法（タグごと渡す） -->
+  <h1>Slots</h1>
+  <BaseCard>
+    <h2>Hello</h2>
+    <p>How are you</p>
+  </BaseCard>
+  <br>
+  <input ref="user-input" type="text" />
+
   <!-- emit(child → parsent) ケバブケースを使うこと -->
   <p>{{ count2 }}</p>
   <button @click="count2++">+1</button>
