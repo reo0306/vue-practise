@@ -144,10 +144,15 @@ onMounted(() => {
   <!-- Propsとは違う方法（タグごと渡す） -->
   <h1>Slots</h1>
   <BaseCard>
-    <h2>Hello</h2>
-    <p>How are you</p>
+    <template #header>
+      <h2>Vue.js Course</h2>
+    </template>
+    <p>This is a Vue.js Course</p>
+    <p>Hello</p>
+    <template #footer>
+      <p>Instructor: aaaa</p>
+    </template>
   </BaseCard>
-  <BaseCard />
   <br>
   <input ref="user-input" type="text" />
 
