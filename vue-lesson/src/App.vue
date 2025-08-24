@@ -144,11 +144,16 @@ onMounted(() => {
   <!-- Propsとは違う方法（タグごと渡す） -->
   <h1>Slots</h1>
   <BaseCard>
-    <template #header>
-      <h2>Vue.js Course</h2>
+    <template #header="{ pageCount }">
+      <h2 v-if="pageCount == 1">Vue.js Course</h2>
+      <h2 v-if="pageCount == 2">HTML Course</h2>
+      <h2 v-if="pageCount == 3">CSSCourse</h2>
     </template>
-    <p>This is a Vue.js Course</p>
-    <p>Hello</p>
+    <template #default="{ pageCount}">
+      <p v-if="pageCount == 1">This is a Vue.js Course</p>
+      <p v-if="pageCount == 2">This is a HTML Course</p>
+      <p v-if="pageCount == 3">This is a CSS Course</p>
+    </template>
     <template #footer>
       <p>Instructor: aaaa</p>
     </template>
