@@ -143,6 +143,8 @@ onMounted(() => {
 
 const currentComp = shallowRef(CompA);
 console.log(CompA);
+
+const isShow = ref(false);
 </script>
 
 <template>
@@ -154,6 +156,18 @@ console.log(CompA);
   <KeepAlive :include="['CompB','CompC']">
     <component :is="currentComp"/>
   </KeepAlive>
+  <!-- toで指定した属性に追加,vueで管理外に追加 -->
+  <button @click="isShow = true">Open Model</button>
+  <Teleport to="body">
+    <dialog v-if="isShow" open>
+      <p>This is a modal!</p>
+      <button @click="isShow = false">Close</button>
+    </dialog>
+    <h2>Teleport</h2>
+    <p>{{ currentComp === CompA }}</p>
+  </Teleport>
+  <Teleport to="body" defer><p>A</p></Teleport>
+  <Teleport to="body"><p>B</p></Teleport>
   <!--
   <KeepAlive exclude="['CompA']">
     <component :is="currentComp"/>
