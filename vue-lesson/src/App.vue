@@ -4,6 +4,9 @@ import BaseButton from '@/components/BaseButton.vue';
 import ShowCount from '@/components/ShowCount.vue';
 import ResetButton from '@/components/ResetButton.vue';
 import BaseCard from '@/components/BaseCard.vue';
+import CompA from '@/components/CompA.vue';
+import CompB from '@/components/CompB.vue';
+import CompC from '@/components/CompC.vue';
 import { ref, reactive, computed, watchEffect, watch, useTemplateRef, onMounted } from 'vue';
 
 const title = ref('Vue.js Course');
@@ -138,9 +141,17 @@ onMounted(() => {
   userInput1.value
 });
 
+const currentComp = ref(CompA);
 </script>
 
 <template>
+  <!-- Dynamic Components -->
+  <h1>Dynamic Components</h1>
+  <button @click="currentComp = CompA">A</button>
+  <button @click="currentComp = CompB">B</button>
+  <button @click="currentComp = CompC">C</button>
+  <component :is="currentComp"/>
+
   <!-- Propsとは違う方法（タグごと渡す） -->
   <h1>Slots</h1>
   <BaseCard>
