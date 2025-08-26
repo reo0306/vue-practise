@@ -7,7 +7,7 @@ import BaseCard from '@/components/BaseCard.vue';
 import CompA from '@/components/CompA.vue';
 import CompB from '@/components/CompB.vue';
 import CompC from '@/components/CompC.vue';
-import { ref, reactive, computed, watchEffect, watch, useTemplateRef, onMounted } from 'vue';
+import { ref, reactive, computed, watchEffect, watch, useTemplateRef, onMounted, shallowRef } from 'vue';
 
 const title = ref('Vue.js Course');
 const price = ref(9.99); // リアクティビティ（リアクティブ）
@@ -141,7 +141,8 @@ onMounted(() => {
   userInput1.value
 });
 
-const currentComp = ref(CompA);
+const currentComp = shallowRef(CompA);
+console.log(CompA);
 </script>
 
 <template>
