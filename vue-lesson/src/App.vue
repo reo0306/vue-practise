@@ -151,7 +151,13 @@ console.log(CompA);
   <button @click="currentComp = CompA">A</button>
   <button @click="currentComp = CompB">B</button>
   <button @click="currentComp = CompC">C</button>
-  <component :is="currentComp"/>
+  <KeepAlive>
+    <component :is="currentComp"/>
+  </KeepAlive>
+  <KeepAlive>
+    <!-- 1つのコンポーネントだけ。v-showでも、できる -->
+    <CompB v-if="currentComp == CompB" />
+  </KeepAlive>
 
   <!-- Propsとは違う方法（タグごと渡す） -->
   <h1>Slots</h1>
