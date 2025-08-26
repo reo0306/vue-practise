@@ -154,17 +154,23 @@ console.log(CompA);
   <KeepAlive :include="['CompB','CompC']">
     <component :is="currentComp"/>
   </KeepAlive>
+  <!--
   <KeepAlive exclude="['CompA']">
     <component :is="currentComp"/>
   </KeepAlive>
+   -->
   <!-- 記録するコンポーネントの量を保持する -->
+  <!--
   <KeepAlive :max="2">
     <component :is="currentComp"/>
   </KeepAlive>
+   -->
   <!-- 1つのコンポーネントだけ。v-showでも、できる -->
+  <!--
   <KeepAlive>
     <CompB v-if="currentComp == CompB" />
   </KeepAlive>
+   -->
 
   <!-- Propsとは違う方法（タグごと渡す） -->
   <h1>Slots</h1>

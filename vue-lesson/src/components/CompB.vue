@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, onActivated, onDeactivated } from 'vue';
 
 onMounted(() => {
   console.log('CompB onMounted');
@@ -8,8 +8,16 @@ onUnmounted(() => {
   console.log('CompB onUnmounted');
 });
 
-const count = ref(0);
+// 表示
+onActivated(() => {
+  console.log("CompB onActivated");
+});
 
+// 消えるとき
+onDeactivated(() => {
+  console.log("CompB onDeactivated");
+});
+const count = ref(0);
 </script>
 
 <template>
