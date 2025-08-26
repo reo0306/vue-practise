@@ -7,6 +7,8 @@ import BaseCard from '@/components/BaseCard.vue';
 import CompA from '@/components/CompA.vue';
 //import CompB from '@/components/CompB.vue';
 import CompC from '@/components/CompC.vue';
+import BaseLoder from '@/components/BaseLoder.vue';
+import ErrorMessage from '@/components/ErrorMessage.vue';
 import { ref, reactive, computed, watchEffect, watch, useTemplateRef, onMounted, shallowRef, defineAsyncComponent } from 'vue';
 
 const title = ref('Vue.js Course');
@@ -146,7 +148,14 @@ console.log(CompA);
 
 const isShow = ref(false);
 
-const CompB = defineAsyncComponent(() => import('@/components/CompB.vue'));
+//const CompB = defineAsyncComponent(() => import('@/components/CompB.vue'));
+const CompB = defineAsyncComponent({
+  loader: () => import('@/components/CompB.vue'),
+  loadingComponent: BaseLoder,
+  delay: 200,
+  errorComponent: ErrorMessage,
+  timeout: 2000,
+});
 </script>
 
 <template>
