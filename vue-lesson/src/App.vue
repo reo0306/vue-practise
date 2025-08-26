@@ -151,11 +151,18 @@ console.log(CompA);
   <button @click="currentComp = CompA">A</button>
   <button @click="currentComp = CompB">B</button>
   <button @click="currentComp = CompC">C</button>
-  <KeepAlive>
+  <KeepAlive :include="['CompB','CompC']">
     <component :is="currentComp"/>
   </KeepAlive>
+  <KeepAlive exclude="['CompA']">
+    <component :is="currentComp"/>
+  </KeepAlive>
+  <!-- 記録するコンポーネントの量を保持する -->
+  <KeepAlive :max="2">
+    <component :is="currentComp"/>
+  </KeepAlive>
+  <!-- 1つのコンポーネントだけ。v-showでも、できる -->
   <KeepAlive>
-    <!-- 1つのコンポーネントだけ。v-showでも、できる -->
     <CompB v-if="currentComp == CompB" />
   </KeepAlive>
 
