@@ -5,9 +5,9 @@ import ShowCount from '@/components/ShowCount.vue';
 import ResetButton from '@/components/ResetButton.vue';
 import BaseCard from '@/components/BaseCard.vue';
 import CompA from '@/components/CompA.vue';
-import CompB from '@/components/CompB.vue';
+//import CompB from '@/components/CompB.vue';
 import CompC from '@/components/CompC.vue';
-import { ref, reactive, computed, watchEffect, watch, useTemplateRef, onMounted, shallowRef } from 'vue';
+import { ref, reactive, computed, watchEffect, watch, useTemplateRef, onMounted, shallowRef, defineAsyncComponent } from 'vue';
 
 const title = ref('Vue.js Course');
 const price = ref(9.99); // リアクティビティ（リアクティブ）
@@ -145,6 +145,8 @@ const currentComp = shallowRef(CompA);
 console.log(CompA);
 
 const isShow = ref(false);
+
+const CompB = defineAsyncComponent(() => import('@/components/CompB.vue'));
 </script>
 
 <template>
@@ -156,6 +158,7 @@ const isShow = ref(false);
   <KeepAlive :include="['CompB','CompC']">
     <component :is="currentComp"/>
   </KeepAlive>
+
   <!-- toで指定した属性に追加,vueで管理外に追加 -->
   <button @click="isShow = true">Open Model</button>
   <Teleport to="body">
