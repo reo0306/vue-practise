@@ -160,6 +160,7 @@ const CompB = defineAsyncComponent({
 const checked = ref('not checked');
 const fruits2 = ref([]);
 const gender = ref('male');
+const selected = ref([]);
 </script>
 
 <template>
@@ -189,6 +190,13 @@ const gender = ref('male');
   <input id="female" v-model="gender" type="radio" value="female"/>
   <label for="female">female</label>
   <p>{{ gender }}</p>
+
+  <h2>Select</h2>
+  <select v-model="selected">
+    <option value="" disabled>Select one</option>
+    <option v-for="option in ['A', 'B', 'C']" :key="option">{{ option }}</option>
+  </select>
+  <p>{{ selected }}</p>
 
   <!-- Dynamic Components -->
   <h1>Dynamic Components</h1>
