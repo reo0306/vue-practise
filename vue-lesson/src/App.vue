@@ -9,6 +9,7 @@ import CompA from '@/components/CompA.vue';
 import CompC from '@/components/CompC.vue';
 import BaseLoder from '@/components/BaseLoder.vue';
 import ErrorMessage from '@/components/ErrorMessage.vue';
+import CustomInput from '@/components/CustomInput.vue';
 import { ref, reactive, computed, watchEffect, watch, useTemplateRef, onMounted, shallowRef, defineAsyncComponent } from 'vue';
 
 const title = ref('Vue.js Course');
@@ -161,15 +162,23 @@ const checked = ref('not checked');
 const fruits2 = ref([]);
 const gender = ref('male');
 const selected = ref([]);
+const userInput2 = ref();
+const titleInput = ref('title');
 </script>
 
 <template>
+  <!-- defineModel -->
+  <CustomInput v-model.uppercase="userInput2" v-model:title-name="titleInput" />
+  <button @click="userInput2='hello'">hello</button>
+  <p>userInput2: {{ userInput2 }}</p>
+
+  <!-- フォーム -->
   <h1>v-model</h1>
   <h2>Text</h2>
-  <input v-model="userInput" type="text" />
-  <p>{{ userInput }}</p>
+  <input v-model.lazy="userInput" type="number" />
+  <p>{{ typeof userInput }}</p>
   <h2>Textarea</h2>
-  <textarea v-model="message"></textarea>
+  <textarea v-model.trim="message"></textarea>
   <p style="white-space: pre">{{ message }}</p>
 
   <h2>CheckBox</h2>
