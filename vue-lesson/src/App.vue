@@ -156,9 +156,18 @@ const CompB = defineAsyncComponent({
   errorComponent: ErrorMessage,
   timeout: 2000,
 });
+
 </script>
 
 <template>
+  <h1>v-model</h1>
+  <h2>Text</h2>
+  <input v-model="userInput" type="text" />
+  <p>{{ userInput }}</p>
+  <h2>Textarea</h2>
+  <textarea v-model="message"></textarea>
+  <p style="white-space: pre">{{ message }}</p>
+
   <!-- Dynamic Components -->
   <h1>Dynamic Components</h1>
   <button @click="currentComp = CompA">A</button>
