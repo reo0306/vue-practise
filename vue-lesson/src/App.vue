@@ -157,6 +157,8 @@ const CompB = defineAsyncComponent({
   timeout: 2000,
 });
 
+const checked = ref('not checked');
+const fruits2 = ref([]);
 </script>
 
 <template>
@@ -167,6 +169,18 @@ const CompB = defineAsyncComponent({
   <h2>Textarea</h2>
   <textarea v-model="message"></textarea>
   <p style="white-space: pre">{{ message }}</p>
+  <h2>CheckBox</h2>
+  <input id="checkbox" v-model="checked" type="checkbox" true-value="checked" false-value="not checked" />
+  <label for="checkbox">{{ checked }}</label>
+  <p>Fruits</p>
+  <input id="Apple" v-model="fruits2" type="checkbox" value="Apple"/>
+  <label for="Apple">Apple</label>
+  <input id="Banana" v-model="fruits2" type="checkbox" value="Banana"/>
+  <label for="Banana">Banana</label>
+  <input id="Grape" v-model="fruits2" type="checkbox" value="Grape"/>
+  <label for="Grape">Grape</label>
+  <p>{{ fruits2 }}</p>
+
 
   <!-- Dynamic Components -->
   <h1>Dynamic Components</h1>
