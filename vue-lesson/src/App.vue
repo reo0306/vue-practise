@@ -10,6 +10,8 @@ import CompC from '@/components/CompC.vue';
 import BaseLoder from '@/components/BaseLoder.vue';
 import ErrorMessage from '@/components/ErrorMessage.vue';
 import CustomInput from '@/components/CustomInput.vue';
+import { refHistory } from '@/composables/refHistory';
+
 import { ref, reactive, computed, watchEffect, watch, useTemplateRef, onMounted, shallowRef, defineAsyncComponent } from 'vue';
 
 const title = ref('Vue.js Course');
@@ -164,9 +166,24 @@ const gender = ref('male');
 const selected = ref([]);
 const userInput2 = ref();
 const titleInput = ref('title');
+
+const countCon = ref(0);
+
+const {history, undo} = refHistory(countCon);
+const userInputCon = ref('');
+const { history: history2, undo: undo2} = refHistory(userInputCon);
 </script>
 
 <template>
+  <p>{{ countCon }}</p>
+  <button @click="countCon++">+1</button>
+  <p>history: {{ history }}</p>
+  <button @click="undo()">undo</button>
+  <p>userInputCon: {{ userInputCon}}</p>
+  <input v-model="userInputCon" type="text" />
+  <p>history2: {{ history2 }}</p>
+  <button @click="undo2">undo2</button>
+
   <!-- defineModel -->
   <CustomInput v-model.uppercase="userInput2" v-model:title-name="titleInput" />
   <button @click="userInput2='hello'">hello</button>
