@@ -173,6 +173,8 @@ const countCon = ref(0);
 const {history, undo} = useRefLimitedHistory(countCon, ref(3));
 const userInputCon = ref('');
 const { history: history2, undo: undo2} = useRefLimitedHistory(userInputCon, 6);
+
+const isShow2 = ref(true);
 </script>
 
 <template>
@@ -383,9 +385,37 @@ const { history: history2, undo: undo2} = useRefLimitedHistory(userInputCon, 6);
   <h2>Instructor SNS Twitter: {{ instructor.sns.twitter }}</h2>
   <h2>Instructor email: {{ instructor.email }}</h2>
   <h2>Course Info Sections: {{ sections + 1 }}</h2>
+
+  <h1>Animation</h1>
+  <div v-if="isShow2" :class="{ 'opacity-80': isShow2, 'opacity-20': !isShow2, slide: !isShow2}">Hello</div>
+  <button @click="isShow2 = !isShow2">Show</button>
 </template>
 
 <style scoped>
+div {
+  transition: opacity 1s;
+}
+.slide {
+  animation: slide 1s;
+}
+.opacity-80 {
+  opacity: 0.8;
+}
+.opacity-20 {
+  opacity: 0.2;
+}
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(100px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .red {
   color: red;
 }
