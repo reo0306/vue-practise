@@ -392,12 +392,17 @@ const isShow3 = ref(true);
   <button @click="isShow2 = !isShow2">Show</button>
   <br>
   <button @click="isShow3 = !isShow3">switch</button>
-  <Transition name="fade" appear>
+  <Transition
+    name="fade"
+    enter-active-class="hello"
+  >
     <div v-if="isShow3">Hello Fade</div>
   </Transition>
   <Transition name="slide2" appear>
     <div v-if="isShow3">Hello Slide</div>
   </Transition>
+
+  <h1 class="animate__animated animate__bounce">An animated element</h1>
 </template>
 
 <style scoped>
@@ -418,7 +423,7 @@ const isShow3 = ref(true);
 .fade-enter-from {
  opacity: 0;
 }
-.fade-enter-active {
+.hello {
   transition: opacity 1s;
 }
 .fade-enter-to {
