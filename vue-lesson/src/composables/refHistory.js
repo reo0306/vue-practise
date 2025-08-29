@@ -1,6 +1,6 @@
 import { ref, watchEffect } from 'vue';
 
-export function refHistory(source) {
+export function useRefHistory(source) {
   const history = ref([]);
 
   watchEffect(() => {

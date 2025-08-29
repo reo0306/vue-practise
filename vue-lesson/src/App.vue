@@ -10,8 +10,8 @@ import CompC from '@/components/CompC.vue';
 import BaseLoder from '@/components/BaseLoder.vue';
 import ErrorMessage from '@/components/ErrorMessage.vue';
 import CustomInput from '@/components/CustomInput.vue';
-import { refHistory } from '@/composables/refHistory';
-import { refLimitedHistory } from '@/composables/refLimitedHistory';
+//import { refHistory } from '@/composables/refHistory';
+import { useRefLimitedHistory } from '@/composables/refLimitedHistory';
 
 import { ref, reactive, computed, watchEffect, watch, useTemplateRef, onMounted, shallowRef, defineAsyncComponent } from 'vue';
 
@@ -170,9 +170,9 @@ const titleInput = ref('title');
 
 const countCon = ref(0);
 
-const {history, undo} = refLimitedHistory(countCon, 3);
+const {history, undo} = useRefLimitedHistory(countCon, ref(3));
 const userInputCon = ref('');
-const { history: history2, undo: undo2} = refLimitedHistory(userInputCon, 6);
+const { history: history2, undo: undo2} = useRefLimitedHistory(userInputCon, 6);
 </script>
 
 <template>
