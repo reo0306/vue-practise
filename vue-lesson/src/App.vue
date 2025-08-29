@@ -175,6 +175,7 @@ const userInputCon = ref('');
 const { history: history2, undo: undo2} = useRefLimitedHistory(userInputCon, 6);
 
 const isShow2 = ref(true);
+const isShow3 = ref(true);
 </script>
 
 <template>
@@ -389,9 +390,33 @@ const isShow2 = ref(true);
   <h1>Animation</h1>
   <div v-if="isShow2" :class="{ 'opacity-80': isShow2, 'opacity-20': !isShow2, slide: !isShow2}">Hello</div>
   <button @click="isShow2 = !isShow2">Show</button>
+  <br>
+  <button @click="isShow3 = !isShow3">switch</button>
+  <Transition>
+    <div v-if="isShow3">Hello</div>
+  </Transition>
 </template>
 
 <style scoped>
+.v-enter-from {
+ opacity: 0;
+}
+.v-enter-active {
+  transition: opacity 1s;
+}
+.v-enter-to {
+ opacity: 1;
+}
+.v-leave-from {
+  opacity: 1;
+}
+.v-leave-active {
+  transition: opacity 1s;
+}
+.v-leave-to {
+  opacity: 0;
+}
+
 div {
   transition: opacity 1s;
 }
