@@ -392,10 +392,10 @@ const isShow3 = ref(true);
   <button @click="isShow2 = !isShow2">Show</button>
   <br>
   <button @click="isShow3 = !isShow3">switch</button>
-  <Transition name="fade">
+  <Transition name="fade" appear>
     <div v-if="isShow3">Hello Fade</div>
   </Transition>
-  <Transition name="slide2">
+  <Transition name="slide2" appear>
     <div v-if="isShow3">Hello Slide</div>
   </Transition>
 </template>
