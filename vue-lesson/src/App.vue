@@ -393,11 +393,28 @@ const isShow3 = ref(true);
   <br>
   <button @click="isShow3 = !isShow3">switch</button>
   <Transition name="fade">
-    <div v-if="isShow3">Hello</div>
+    <div v-if="isShow3">Hello Fade</div>
+  </Transition>
+  <Transition name="slide2">
+    <div v-if="isShow3">Hello Slide</div>
   </Transition>
 </template>
 
 <style scoped>
+.slide2-enter-active {
+  animation: slide2 1s;
+}
+.slide2-leave-active {
+  animation: slide2 1s reverse;
+}
+@keyframes slide2 {
+ 0% {
+  transform: translateX(20px);
+ }
+ 100% {
+  transform: translateX(0);
+ }
+}
 .fade-enter-from {
  opacity: 0;
 }
