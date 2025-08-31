@@ -176,6 +176,25 @@ const { history: history2, undo: undo2} = useRefLimitedHistory(userInputCon, 6);
 
 const isShow2 = ref(true);
 const isShow3 = ref(true);
+function beforeEnter(el) {
+  console.log('befor enter', el);
+  el.style.transform = 'translateX(30px)';
+}
+function enter() {
+  console.log('enter', el);
+}
+function afterEnter() {
+  console.log('after enter', el);
+}
+function beforeLeave() {
+  console.log('before leave', el);
+}
+function leave() {
+  console.log('leave', el);
+}
+function afterLeave() {
+  console.log('after leave', el);
+}
 </script>
 
 <template>
@@ -403,6 +422,23 @@ const isShow3 = ref(true);
   </Transition>
 
   <h1 class="animate__animated animate__bounce">An animated element</h1>
+
+  <button @click="isShow2 = !isShow2">switch</button>
+  <Transition name="fade" mode="in-out">
+    <div v-if="isShow2">ON</div>
+    <div v-else>OFF</div>
+  </Transition>
+
+  <Transition name="fade"
+    @before-enter="beforeEnter"
+    @enter="enter"
+    @after-enter="afterEnter"
+    @before-leave="beforeLeave"
+    @leave="leave"
+    @after-leave="afterLeave"
+  >
+  <div v-if="isShow2">Hello</div>
+  </Transition>
 </template>
 
 <style scoped>
