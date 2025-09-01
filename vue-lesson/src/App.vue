@@ -180,8 +180,16 @@ function beforeEnter(el) {
   console.log('befor enter', el);
   el.style.transform = 'translateX(30px)';
 }
-function enter() {
+function enter(el) {
   console.log('enter', el);
+  let translateXValue = 30
+  const intervalId = setInterval(() => {
+    translateXValue -= 1;
+    el.style.transform = `translateX(${translateXValue})px)`
+    if (translateXValue === 0) {
+      clearInterval(intervalId)
+    }
+  }, 20)
 }
 function afterEnter() {
   console.log('after enter', el);
@@ -189,8 +197,16 @@ function afterEnter() {
 function beforeLeave() {
   console.log('before leave', el);
 }
-function leave() {
+function leave(el) {
   console.log('leave', el);
+  let translateXValue = 0
+  const intervalId = setInterval(() => {
+    translateXValue += 1;
+    el.style.transform = `translateX(${translateXValue})px)`
+    if (translateXValue === 30) {
+      clearInterval(intervalId)
+    }
+  }, 20)
 }
 function afterLeave() {
   console.log('after leave', el);
