@@ -180,7 +180,7 @@ function beforeEnter(el) {
   console.log('befor enter', el);
   el.style.transform = 'translateX(30px)';
 }
-function enter(el) {
+function enter(el, done) {
   console.log('enter', el);
   let translateXValue = 30
   const intervalId = setInterval(() => {
@@ -188,6 +188,7 @@ function enter(el) {
     el.style.transform = `translateX(${translateXValue})px)`
     if (translateXValue === 0) {
       clearInterval(intervalId)
+      done()
     }
   }, 20)
 }
@@ -197,7 +198,7 @@ function afterEnter() {
 function beforeLeave() {
   console.log('before leave', el);
 }
-function leave(el) {
+function leave(el, done) {
   console.log('leave', el);
   let translateXValue = 0
   const intervalId = setInterval(() => {
@@ -205,6 +206,7 @@ function leave(el) {
     el.style.transform = `translateX(${translateXValue})px)`
     if (translateXValue === 30) {
       clearInterval(intervalId)
+      done()
     }
   }, 20)
 }
@@ -445,7 +447,8 @@ function afterLeave() {
     <div v-else>OFF</div>
   </Transition>
 
-  <Transition name="fade"
+  <Transition
+    :css="false"
     @before-enter="beforeEnter"
     @enter="enter"
     @after-enter="afterEnter"
