@@ -225,12 +225,23 @@ function leaveCancelled(el) {
 }
 const fruits3 = ref(['Apple', 'Banana', 'Grape']);
 const newFruit = ref('');
+
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
+function toAbout() {
+  console.log('toAbout');
+  //router.push({ path: '/about'})
+  //router.replace({ path: '/about'})
+  router.go(-1)
+}
 </script>
 
 <template>
   <h1>Vue Router</h1>
-  <RouterLink :to="'/?lang=ja#title'">Home</RouterLink> |
+  <RouterLink :to="{ name: 'home' }" replace>Home</RouterLink> |
   <RouterLink :to="{path: '/about', query: { lang: 'ja' }, hash: '#title'}">About</RouterLink>
+  <button @click="toAbout">About</button>
   <RouterView />
 
   <p>{{ countCon }}</p>
