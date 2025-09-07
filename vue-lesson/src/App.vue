@@ -14,6 +14,7 @@ import CustomInput from '@/components/CustomInput.vue';
 import { useRefLimitedHistory } from '@/composables/refLimitedHistory';
 
 import { ref, reactive, computed, watchEffect, watch, useTemplateRef, onMounted, shallowRef, defineAsyncComponent } from 'vue';
+import { RouterView } from 'vue-router';
 
 const title = ref('Vue.js Course');
 const price = ref(9.99); // リアクティビティ（リアクティブ）
@@ -227,6 +228,9 @@ const newFruit = ref('');
 </script>
 
 <template>
+  <h1>Vue Router</h1>
+  <RouterView />
+
   <p>{{ countCon }}</p>
   <button @click="countCon++">+1</button>
   <p>history: {{ history }}</p>
