@@ -203,15 +203,14 @@ function enterCancelled(el) {
 function beforeLeave(el) {
   console.log('before leave', el);
 }
-let leaveIntervalId;
 function leave(el, done) {
   console.log('leave', el);
   let translateXValue = 0
-  leaveIntervalId = setInterval(() => {
+  const intervalId = setInterval(() => {
     translateXValue += 1;
     el.style.transform = `translateX(${translateXValue})px)`
     if (translateXValue === 30) {
-      clearInterval(leaveIntervalId)
+      clearInterval(intervalId)
       done()
     }
   }, 20)
@@ -223,6 +222,8 @@ function leaveCancelled(el) {
   console.log('leave cancelled', el);
   clearInterval(intervalId)
 }
+const fruits3 = ref(['Apple', 'Banana', 'Grape']);
+const newFruit = ref('');
 </script>
 
 <template>
@@ -469,6 +470,14 @@ function leaveCancelled(el) {
   >
   <div v-if="isShow2">Hello</div>
   </Transition>
+
+  <input v-model="newFruit" type="text" />
+  <button @click="fruits3.unshift(newFruit)">Add</button>
+  <TransitionGroup name="fade">
+    <div v-for="(fruit, index) in fruits3" :key="fruit" @click="fruits3.splice(index,1)">
+      {{ fruit }}
+    </div>
+  </TransitionGroup>
 </template>
 
 <style scoped>
