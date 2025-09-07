@@ -180,6 +180,7 @@ function beforeEnter(el) {
   console.log('befor enter', el);
   el.style.transform = 'translateX(30px)';
 }
+let intervalId;
 function enter(el, done) {
   console.log('enter', el);
   let translateXValue = 30
@@ -192,26 +193,35 @@ function enter(el, done) {
     }
   }, 20)
 }
-function afterEnter() {
+function afterEnter(el) {
   console.log('after enter', el);
 }
-function beforeLeave() {
+function enterCancelled(el) {
+  console.log('enter cancelled', el);
+  clearInterval(intervalId)
+}
+function beforeLeave(el) {
   console.log('before leave', el);
 }
+let leaveIntervalId;
 function leave(el, done) {
   console.log('leave', el);
   let translateXValue = 0
-  const intervalId = setInterval(() => {
+  leaveIntervalId = setInterval(() => {
     translateXValue += 1;
     el.style.transform = `translateX(${translateXValue})px)`
     if (translateXValue === 30) {
-      clearInterval(intervalId)
+      clearInterval(leaveIntervalId)
       done()
     }
   }, 20)
 }
 function afterLeave() {
   console.log('after leave', el);
+}
+function leaveCancelled(el) {
+  console.log('leave cancelled', el);
+  clearInterval(intervalId)
 }
 </script>
 
@@ -452,6 +462,7 @@ function afterLeave() {
     @before-enter="beforeEnter"
     @enter="enter"
     @after-enter="afterEnter"
+    @enter-cancelled="enterCancelled"
     @before-leave="beforeLeave"
     @leave="leave"
     @after-leave="afterLeave"
