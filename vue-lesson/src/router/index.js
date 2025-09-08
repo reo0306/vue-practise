@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import BlogView from '../views/BlogView.vue'
+import NotFound from '../views/NofFound.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -17,9 +18,14 @@ const router = createRouter({
       component: AboutView
     },
     {
-      path: '/blog/:id/archive/:version',
+      path: '/blog/:id*',
       name: 'blog',
       component: BlogView
+    },
+    {
+      path: '/:catchAll(.*)*',
+      name: 'notFound',
+      component: NotFound
     },
   ]
 })
