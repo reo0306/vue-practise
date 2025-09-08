@@ -242,7 +242,13 @@ function toAbout() {
   <RouterLink :to="{ name: 'home' }" replace>Home</RouterLink> |
   <RouterLink :to="{path: '/about', query: { lang: 'ja' }, hash: '#title'}">About</RouterLink>
   <button @click="toAbout">About</button>
-  <RouterView />
+  <div class="container">
+    <main>
+      <RouterView />
+      <RouterView name="Sidevar"/>
+    </main>
+  </div>
+  <RouterView name="Footer"/>
 
   <p>{{ countCon }}</p>
   <button @click="countCon++">+1</button>
@@ -567,5 +573,9 @@ div {
 }
 .border {
   border: 1px solid red;
+}
+.container {
+  display: flex;
+  justify-content: space-evenly;
 }
 </style>

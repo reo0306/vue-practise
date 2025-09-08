@@ -3,6 +3,13 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import BlogView from '../views/BlogView.vue'
 import NotFound from '../views/NofFound.vue'
+import ProfileView from '../views/ProfileView.vue'
+import PostsView from '../views/PostsView.vue'
+import LikesView from '../views/LikesView.vue'
+import NewsView from '../views/NewsView.vue'
+import PeopleYouMayKnow from '../views/PeopleYouMayKnow.vue'
+import HomeFooter from '../views/HomeFooter.vue'
+import ProfileFooter from '../views/ProfileFooter.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -10,21 +17,50 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      components: {
+        default: HomeView,
+        Sidevar: NewsView,
+        Footer: HomeFooter,
+      }
+    },
+    {
+      path: '/:id',
+      name: 'profile',
+      components: {
+        default: ProfileView,
+        Sidevar: PeopleYouMayKnow,
+        Footer: ProfileFooter,
+      },
+      children: [
+        {
+          path: 'posts',
+          name: 'posts',
+          component: PostsView,
+        },
+        {
+          path: 'likes',
+          name: 'likes',
+          component: LikesView,
+        },
+      ]
     },
     {
       path: '/about',
+      alias: ['/me', '/yoshipi'],
       name: 'about',
       component: AboutView
     },
     {
       path: '/blog/:id*',
+      alias: '/article/:id',
       name: 'blog',
       component: BlogView
     },
     {
       path: '/:catchAll(.*)*',
       name: 'notFound',
+      //redirect: { name: 'home' },
+      props: true,
       component: NotFound
     },
   ]
