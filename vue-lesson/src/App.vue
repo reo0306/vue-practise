@@ -239,6 +239,8 @@ function toAbout() {
 
 <template>
   <h1>Vue Router</h1>
+  <RouterView />
+  <p style="margin-top: 1000px;">bottom</p>
   <RouterLink :to="{ name: 'home' }" replace>Home</RouterLink> |
   <RouterLink :to="{path: '/about', query: { lang: 'ja' }, hash: '#title'}">About</RouterLink>
   <button @click="toAbout">About</button>
@@ -249,6 +251,12 @@ function toAbout() {
     </main>
   </div>
   <RouterView name="Footer"/>
+  <RouterLink :to="{ name: 'blog', params: { id: 3} }">Blog(id: 3)</RouterLink>
+  <RouterView v-slot="{ Component, route }">
+    <Transition name="fade" mode="out-in">
+      <component :is="Component" :key="route.path" />
+    </Transition>
+  </RouterView>
 
   <p>{{ countCon }}</p>
   <button @click="countCon++">+1</button>

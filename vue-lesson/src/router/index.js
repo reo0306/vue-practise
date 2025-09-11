@@ -63,7 +63,26 @@ const router = createRouter({
       props: true,
       component: NotFound
     },
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        if (savedPosition) {
+          return resolve(savedPosition)
+        }
+        if (to.hash) {
+          return resolve({
+            top: 20,
+            left: 0,
+            el: '#blog',
+            behavior: 'smooth',
+          })
+        }
+        return resolve({ top: 0, left: 0, behavior: 'smooth' })
+      }, 2000);
+    });
+
+  }
 })
 
 export default router

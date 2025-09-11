@@ -18,8 +18,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <h2>Blog</h2>
-  <p>Blog(id: {{ $route.params.id }})</p>
-  <p>ver: {{ $route.params.version }}</p>
-  <RouterLink :to="{ name: 'blog', params: { id: Number($route.params.id) + 1, version: $route.params.version }}">Next</RouterLink>
+  <div>
+    <h2 id="blog">Blog</h2>
+    <p>Blog(id: {{ $route.params.id }})</p>
+    <p>ver: {{ $route.params.version }}</p>
+    <RouterLink :to="{ name: 'blog', params: { id: Number($route.params.id) + 1, version: $route.params.version }, hash: 'blog'}">Next</RouterLink>
+  </div>
 </template>
