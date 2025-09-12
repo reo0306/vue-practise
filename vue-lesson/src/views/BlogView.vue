@@ -1,12 +1,16 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import { onBeforeRouteUpdate } from 'vue-router';
+import { onBeforeRouteUpdate, onBeforeRouteLeave } from 'vue-router';
 
 onBeforeRouteUpdate(() => {
    console.log('onBeforeRouteUpdate')
 })
-
+onBeforeRouteLeave(() => {
+   console.log('onBeforeRouteLeave')
+   window.confirm('本当にこのページを離れますか')
+   return false
+})
 const route = useRoute();
 //console.log(route.params.id);
 watch(
