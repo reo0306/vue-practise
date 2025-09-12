@@ -93,4 +93,10 @@ router.beforeEach(async (to, from) => {
   console.log('beforeEach');
   //if (to.name === 'blog') return { name: 'home'};
 })
+router.beforeResolve(() => {
+  console.log('beforeResolve');
+})
+router.afterEach(() => {
+  console.log('afterEach');
+})
 export default router
