@@ -54,7 +54,10 @@ const router = createRouter({
       path: '/blog/:id*',
       alias: '/article/:id',
       name: 'blog',
-      component: BlogView
+      component: BlogView,
+      beforeEnter() {
+        console.log('beforeEnter');
+      }
     },
     {
       path: '/:catchAll(.*)*',
