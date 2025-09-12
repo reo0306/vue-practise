@@ -1,19 +1,25 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
+import { onBeforeRouteUpdate } from 'vue-router';
+
+onBeforeRouteUpdate(() => {
+   console.log('onBeforeRouteUpdate')
+})
+
 const route = useRoute();
-console.log(route.params.id);
+//console.log(route.params.id);
 watch(
   () => route.params.id,
   () => {
-    console.log('watch')
+    //console.log('watch')
   }
 )
 onMounted(() => {
-  console.log('onMounted');
+  //console.log('onMounted');
 })
 onUnmounted(() => {
-  console.log('onUnmounted')
+  //console.log('onUnmounted')
 })
 </script>
 
