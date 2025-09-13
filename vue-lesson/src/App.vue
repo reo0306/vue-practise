@@ -246,7 +246,9 @@ console.log(counterStore.count)
 <template>
   <h1>Pinia</h1>
   <button @click="counterStore.count++">+1</button>
+  <button @click="counterStore.increment">incurement</button>
   <p>{{ counterStore.count }}</p>
+  <p>doubuleCount: {{ counterStore.dobuleCount }}</p>
   <CounterComp />
 
   <h1>Vue Router</h1>
