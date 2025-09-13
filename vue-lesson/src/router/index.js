@@ -54,6 +54,7 @@ const router = createRouter({
       path: '/blog/:id*',
       alias: '/article/:id',
       name: 'blog',
+      meta: { requireAuth: true },
       component: BlogView,
       beforeEnter() {
         console.log('beforeEnter');
@@ -87,9 +88,12 @@ const router = createRouter({
 
   }
 })
-router.beforeEach(async (to, from) => {
-  await new Promise((resolve) => setTimeout(resolve, 2000))
-  console.log(to, from);
+router.beforeEach(() => {
+  /*if (to.meta.requireAuth && !isLoggin) {
+    return '/'
+  }*/
+  //await new Promise((resolve) => setTimeout(resolve, 2000))
+  //console.log(to, from);
   console.log('beforeEach');
   //if (to.name === 'blog') return { name: 'home'};
 })
