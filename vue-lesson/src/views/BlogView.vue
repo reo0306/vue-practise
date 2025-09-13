@@ -8,8 +8,7 @@ onBeforeRouteUpdate(() => {
 })
 onBeforeRouteLeave(() => {
    console.log('onBeforeRouteLeave')
-   window.confirm('本当にこのページを離れますか')
-   return false
+   return window.confirm('本当にこのページを離れますか')
 })
 const route = useRoute();
 //console.log(route.params.id);

@@ -235,9 +235,20 @@ function toAbout() {
   //router.replace({ path: '/about'})
   router.go(-1)
 }
+import { useCounterStore } from './stores/counter';
+import CounterComp from '@/components/CounterComp.vue';
+
+const counterStore = useCounterStore()
+console.log('counterStore.count')
+console.log(counterStore.count)
 </script>
 
 <template>
+  <h1>Pinia</h1>
+  <button @click="counterStore.count++">+1</button>
+  <p>{{ counterStore.count }}</p>
+  <CounterComp />
+
   <h1>Vue Router</h1>
   <RouterView />
   <p style="margin-top: 1000px;">bottom</p>

@@ -17,6 +17,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
+      component: HomeView,
       components: {
         default: HomeView,
         Sidevar: NewsView,
