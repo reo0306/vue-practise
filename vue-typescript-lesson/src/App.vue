@@ -19,8 +19,9 @@ onMounted(() => {
   userInput.value?.focus()
 })
 
-const courseTitle = ref('vue.js course')
+//const courseTitle = ref('vue.js course')
 
+const userInput2 = ref('')
 </script>
 
 <template>
@@ -28,5 +29,7 @@ const courseTitle = ref('vue.js course')
   <input ref="user-input" type="text" />
   <button @click="countUp">+1</button>
   <p>count:{{ count }}</p>
-  <ChildComp :course="courseTitle"/>
+  <!-- <ChildComp :course="courseTitle"/>-->
+  <ChildComp v-model="userInput" />
+  <p>userInput2: {{ userInput2 }}</p>
 </template>
