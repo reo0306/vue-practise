@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, useTemplateRef } from 'vue';
+import ChildComp from '@/components/ChildComp.vue';
 
 const count = ref(0)
 const dobuleCount = computed<number>(() => {
@@ -17,6 +18,9 @@ const userInput = useTemplateRef<HTMLElement>('user-input')
 onMounted(() => {
   userInput.value?.focus()
 })
+
+const courseTitle = ref('vue.js course')
+
 </script>
 
 <template>
@@ -24,4 +28,5 @@ onMounted(() => {
   <input ref="user-input" type="text" />
   <button @click="countUp">+1</button>
   <p>count:{{ count }}</p>
+  <ChildComp :course="courseTitle"/>
 </template>
