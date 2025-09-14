@@ -6,6 +6,12 @@ const dobuleCount = computed<number>(() => {
   if (count.value > 3) return 100
   return count.value * 2
 })
+console.log(dobuleCount.value)
+
+function countUp(event: MouseEvent) {
+  count.value++
+  console.log(event.clientX)
+}
 
 const userInput = useTemplateRef<HTMLElement>('user-input')
 onMounted(() => {
@@ -16,4 +22,6 @@ onMounted(() => {
 <template>
   <h1>TypeScript</h1>
   <input ref="user-input" type="text" />
+  <button @click="countUp">+1</button>
+  <p>count:{{ count }}</p>
 </template>
