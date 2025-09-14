@@ -1,8 +1,12 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
-const count = ref<number | string>(0)
-count.value = 'hello'
+const count = ref(0)
+const dobuleCount = computed<number>(() => {
+  if (count.value > 3) return 100
+  return count.value * 2
+})
+dobuleCount.value
 </script>
 
 <template>
