@@ -1,10 +1,10 @@
 <script setup lang="ts">
-function add(a: number, b: number) {
-  return a + b
-}
+import { ref } from 'vue';
+
+const count = ref<number | string>(0)
+count.value = 'hello'
 </script>
 
 <template>
   <h1>TypeScript</h1>
-  <button @click="add(3, 5)">add</button>
 </template>
