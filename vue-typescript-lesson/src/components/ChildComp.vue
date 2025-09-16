@@ -30,6 +30,6 @@ defineEmits<{
   <h2>ChildComp</h2>
   <input v-model="model" type="text" />
   <p>model: {{ model }}</p>
-  <p>title: {{ title }}</p>
+  <!--<p>title: {{ title }}</p>-->
   <button @click="$emit('update', 100)">button</button>
 </template>
