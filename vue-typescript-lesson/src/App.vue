@@ -22,9 +22,26 @@ onMounted(() => {
 //const courseTitle = ref('vue.js course')
 
 const userInput2 = ref('')
+
+/*
+// Options API
+export default {
+  data() {
+    return {
+      count5: 0
+    }
+  },
+  methods: {
+    countUp() {
+      this.count5++
+    }
+  }
+}*/
 </script>
 
 <template>
+  <h1>Options API</h1>
+
   <h1>TypeScript</h1>
   <input ref="user-input" type="text" />
   <button @click="countUp">+1</button>
