@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, useTemplateRef } from 'vue';
 import ChildComp from '@/components/ChildComp.vue';
+import ChildComp2 from '@/components/ChildComp2.vue';
+import ChildComp2 from '@/components/ChildComp2.vue';
 
 const count = ref(0)
 const dobuleCount = computed<number>(() => {
@@ -26,10 +28,39 @@ const userInput2 = ref('')
 /*
 // Options API
 export default {
+  components: {
+    ChildComp2
+  }
   data() {
     return {
-      count5: 0
+      count5: 0,
+      parentCountt: 0,
     }
+  },
+  computed: {
+    dobuleCount() {
+      return this.count5 * 2
+    }
+  },
+  watch: {
+    count() {
+      console.log('count watcher')
+    }
+  },
+  beforeMounted() {
+    console.log('beforeMounted')
+  },
+  mounted() {
+    console.log('mounted')
+  },
+  beforeUpdated() {
+    console.log('beforeUpdated')
+  }
+  updated() {
+    console.log('updated')
+  }
+  unmounted() {
+    console.log('unmounted')
   },
   methods: {
     countUp() {
@@ -41,6 +72,11 @@ export default {
 
 <template>
   <h1>Options API</h1>
+  <!--
+  <ChildComp2 :count6="parsentCount" @increment="parentCount++" />
+  <p>{{ count5 }}</p>
+  <p>{{ doubuleCount }}</p>
+  -->
 
   <h1>TypeScript</h1>
   <input ref="user-input" type="text" />
